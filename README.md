@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting Started
 
-Things you may want to cover:
+1. Install version 3.1.4 and bundler
 
-* Ruby version
+2. Then run the following command:
+```
+bundle install
+```
 
-* System dependencies
+## Usage
 
-* Configuration
+You may simply copy paste the following command
 
-* Database creation
+```
+JsonSearcherService.new(query: { full_name: 'jane' }).call
+```
 
-* Database initialization
+This command will return all the hashes with full_name that matches the term _jane_
 
-* How to run the test suite
+## Attributes to specify
 
-* Services (job queues, cache servers, search engines, etc.)
+### path: String
 
-* Deployment instructions
+You may specify a full path of the file (works only with console). The default is the json file save in the codebase _('public/clients.json')_.
 
-* ...
+```
+JsonSearcherService.new(query: { full_name: 'jane' }, path: 'full/path/of/jsonfile).call
+```
+
+### find_duplicates: Boolean
+
+Finding duplicates can be optional. It will find and return all of the hashes with the same emails. Default of value for this parameter is false.
+
+```
+JsonSearcherService.new(query: { full_name: 'jane' }, find_duplicates: false).call
+```
+
